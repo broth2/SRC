@@ -1,0 +1,85 @@
+COMMAND AND CONTROL:
+-ligeiramente mais ligacoes/up_bytes com os servers DNS mas ratio normal(ou suspeito)
+-bastantes pedidos para o dns e bastantes pedidos para redes de fora(google e facebook)
+    -192.168.103.78
+    -192.168.103.107
+
+-----------------------------------------------------------------
+
+BOTNETS:
+-maquinas locais que contactaram outras maquinas locais(excluido 4 servidores), ratio perto de 1:
+    -192.168.103.58 
+    -192.168.103.54 
+    -192.168.103.177
+
+-----------------------------------------------------------------
+
+PAÍSES:
+-ver tráfego para muitos países que não foram contactados no dia normal
+-normal foram contactados 35 paises, no anormal 65, 42 paises foram novos
+    -192.168.103.34
+    -192.168.103.67 
+    -192.168.103.160
+
+    192.168.103.34, 192.168.103.67 and 192.168.103.160
+
+-----------------------------------------------------------------
+
+EXFILTRAÇÃO GOOGLE:
+-uploads sao feitos por UDP e porta 443, com poucas conexoes
+-src:
+    -192.168.103.43
+    -192.168.103.47
+-dst:
+    -142.250.184.157
+    -142.250.184.247
+
+-----------------------------------------------------------------
+
+EXFILTRAÇÃO TWITTER:
+-ratios e uploads por tcp 443, com muitas conexoes
+-src:
+    -192.168.103.110
+    -192.168.103.207
+-dst:
+    -104.244.42.1
+
+-----------------------------------------------------------------
+
+EXFILTRAÇÃO DNS:
+-ratio muito grande e destino dentro da rede
+    -puta que pareu
+
+-o que ta acima deve tar mal
+
+-grande numero de pedidos e grande numero de bytes, exclusivamente com o server DNS
+    -192.168.103.175
+    -192.168.103.137
+
+-----------------------------------------------------------------
+
+timestamps:
+-das 3h36 até as 0h20
+-dia normal das 1h08 ate as 23h34
+-grande comunicacao fora de horas, muito upload periodico
+    -192.168.103.47
+    -dst:
+        -142.250.184.247
+
+
+-----------------------------------------------------------------
+
+Apoio:
+-dns servers port=53;proto=udp:
+    -192.168.103.235
+    -192.168.103.236
+-mail/web servers:
+    -192.168.103.222
+    -192.168.103.238
+-.78 faz muitas chaamdas ao mail server, ver ratio
+-.107 é shady tb
+-suspeito: 192.168.103.28   pouco up/down
+-podem ser exfil por dns (ou podem so estar a mandar mais para uma maquina)
+    -192.168.103.100  192.168.103.235    0.475747
+    -192.168.103.121  192.168.103.235    0.480446
+    -192.168.103.125  192.168.103.236    0.502098

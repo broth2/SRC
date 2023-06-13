@@ -1,0 +1,102 @@
+PC1:
+
+ip 10.1.1.100/24 10.1.1.1
+save
+
+-----------------------------------------------------------------
+
+PC2:
+ip 200.1.1.100/24 200.1.1.1
+save
+
+
+-----------------------------------------------------------------
+VyOS:
+sudo cp /opt/vyatta/etc/config.boot.default /config/config.boot
+reboot
+
+configure
+set interfaces ethernet eth0 address 200.1.1.1/24
+set interfaces ethernet eth1 address 192.1.1.1/24
+set interfaces ethernet eth2 address 10.1.1.1/24
+commit
+save
+
+config
+set nat source rule 100 outbound-interface eth0
+set nat source rule 100 source address 10.1.1.0/24
+set nat source rule 100 translation address 192.1.0.1-192.1.0.10
+commit
+save
+
+config
+set zone-policy zone INSIDE description "Inside (Internal Network)"
+set zone-policy zone INSIDE interface eth2
+set zone-policy zone DMZ description "DMZ (Server Farm)"
+set zone-policy zone DMZ interface eth1
+set zone-policy zone OUTSIDE description "Outside (Internet)"
+set zone-policy zone OUTSIDE interface eth0
+commit
+save
+
+conf
+# config firewalls
+set firewall name FROM-INSIDE-TO-OUTSIDE rule 10 description "Accept ICMP Echo Request"
+set firewall name FROM-INSIDE-TO-OUTSIDE rule 10 action accept
+set firewall name FROM-INSIDE-TO-OUTSIDE rule 10 protocol icmp
+set firewall name FROM-INSIDE-TO-OUTSIDE rule 10 icmp type 8
+set firewall name TO-INSIDE rule 10 description "Accept Established-Related Connections"
+set firewall name TO-INSIDE rule 10 action accept
+set firewall name TO-INSIDE rule 10 state established enable
+set firewall name TO-INSIDE rule 10 state related enable
+# associar comunicacao entre zonas às firewalls configuradas
+set zone-policy zone INSIDE from OUTSIDE firewall name TO-INSIDE
+set zone-policy zone OUTSIDE from INSIDE firewall name FROM-INSIDE-TO-OUTSIDE
+commit
+save
+
+# config dmz para aceitar pings(de inside) e inside para aceitar respostas
+set firewall name FROM-INSIDE-TO-DMZ rule 10 description "Accept ICMP Echo Request"
+set firewall name FROM-INSIDE-TO-DMZ rule 10 action accept
+set firewall name FROM-INSIDE-TO-DMZ rule 10 protocol icmp
+set firewall name FROM-INSIDE-TO-DMZ rule 10 icmp type 8
+set firewall name FROM-INSIDE-TO-DMZ rule 10 destination address 192.1.1.0/24
+set zone-policy zone INSIDE from DMZ firewall name TO-INSIDE
+set zone-policy zone DMZ from INSIDE firewall name FROM-INSIDE-TO-DMZ
+commit
+save
+
+# config outside para receber respostas de DMZ e DMZ(192.1.1.40) para aceitar pings de outside 
+set firewall name FROM-OUTSIDE-TO-DMZ rule 10 description "Accept ICMP Echo Request"
+set firewall name FROM-OUTSIDE-TO-DMZ rule 10 action accept
+set firewall name FROM-OUTSIDE-TO-DMZ rule 10 protocol icmp
+set firewall name FROM-OUTSIDE-TO-DMZ rule 10 icmp type 8
+set firewall name FROM-OUTSIDE-TO-DMZ rule 10 destination address 192.1.1.40
+set firewall name FROM-DMZ-TO-OUTSIDE rule 10 description "Accept Established-Related Connections"
+set firewall name FROM-DMZ-TO-OUTSIDE rule 10 action accept
+set firewall name FROM-DMZ-TO-OUTSIDE rule 10 state established enable
+set firewall name FROM-DMZ-TO-OUTSIDE rule 10 state related enable
+set zone-policy zone OUTSIDE from DMZ firewall name FROM-DMZ-TO-OUTSIDE
+set zone-policy zone DMZ from OUTSIDE firewall name FROM-OUTSIDE-TO-DMZ
+commit
+save
+
+# config DMZ para deixar entrar udp em 192.1.1.140:8080 vindo de outside
+set firewall name FROM-OUTSIDE-TO-DMZ rule 12 description "Accept UDP-8080"
+set firewall name FROM-OUTSIDE-TO-DMZ rule 12 action accept
+set firewall name FROM-OUTSIDE-TO-DMZ rule 12 protocol udp
+set firewall name FROM-OUTSIDE-TO-DMZ rule 12 destination address 192.1.1.140
+set firewall name FROM-OUTSIDE-TO-DMZ rule 12 destination port 8080
+commit
+save
+
+# pings para 192.1.1.140:8080 em UDP geram respostas "icmp host unreachable" 
+# porque a porta nao esta aberta na DMZ para udp
+-----------------------------------------------------------------
+
+
+DMZ:
+edit wired connections
+ipv4 settings
+adicionar dois IPs
+restart à conexao

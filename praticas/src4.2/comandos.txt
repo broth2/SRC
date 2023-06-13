@@ -1,0 +1,111 @@
+PC1:
+ip 10.0.3.100/24 10.0.3.3
+save
+
+------------------------------------------------------------------------
+
+PC2:
+ip 10.0.2.100/24 10.0.2.2
+save
+
+------------------------------------------------------------------------
+
+PC3:
+ip 192.168.0.45/24 192.168.0.1
+save
+
+
+------------------------------------------------------------------------
+PC4:
+ip 192.168.0.40/24 192.168.0.1
+save
+
+
+------------------------------------------------------------------------
+
+R1:
+conf t
+int f0/0
+ip address 11.11.0.1 255.255.255.0
+no shut
+int f0/1
+ip address 192.168.0.1 255.255.255.0
+no shut
+end
+write
+
+conf t
+crypto isakmp policy 30 ! The number defines the order of preference
+authentication pre-share ! Auth. with password
+crypto isakmp key labcom address 11.11.0.2 ! Passw. with Router1
+crypto ipsec transform-set authT ah-sha-hmac ! AH
+crypto ipsec transform-set cipherT esp-des ! ESP with DES
+crypto ipsec transform-set auth_ciphT ah-sha-hmac esp-des ! AH+ESP
+crypto ipsec profile ARipsec ! Defines tunnel type/protocols
+set transform-set authT cipherT auth_ciphT
+
+int Tunnel0
+ip unnumbered f0/0
+tunnel source 11.11.0.1
+tunnel destination 11.11.0.2
+tunnel mode ipsec ipv4
+tunnel protection ipsec profile ARipsec
+ip route 10.0.2.0 255.255.255.0 Tunnel0
+end
+write
+
+------------------------------------------------------------------------
+
+R2:
+conf t
+int f0/0
+ip address 11.11.0.2 255.255.255.0
+no shut
+int f0/1
+ip address 10.0.2.2 255.255.255.0
+no shut
+end
+write
+
+
+conf t
+crypto isakmp policy 30 ! The number defines the order of preference
+authentication pre-share ! Auth. with password
+crypto isakmp key labcom address 11.11.0.1 ! Passw. with Router1
+crypto ipsec transform-set authT ah-sha-hmac ! AH
+crypto ipsec transform-set cipherT esp-des ! ESP with DES
+crypto ipsec transform-set auth_ciphT ah-sha-hmac esp-des ! AH+ESP
+crypto ipsec profile ARipsec ! Defines tunnel type/protocols
+set transform-set authT cipherT auth_ciphT
+
+int Tunnel0
+ip unnumbered f0/0
+tunnel source 11.11.0.2
+tunnel destination 11.11.0.1
+tunnel mode ipsec ipv4
+tunnel protection ipsec profile ARipsec
+ip route 192.168.0.45 255.255.255.255 Tunnel0 ! Route to Server 2 using Ipsec
+ip route 192.168.0.0 255.255.255.0 11.11.0.1 ! Generic static route not using the tunel
+
+end
+write
+
+------------------------------------------------------------------------
+
+R3:
+conf t
+int f0/0
+ip address 11.11.0.3 255.255.255.0
+no shut
+int f0/1
+ip address 10.0.3.3 255.255.255.0
+no shut
+end
+write
+
+
+
+
+------------------------------------------------------------------------
+
+FIQUEI NO 3

@@ -1,0 +1,33 @@
+Apr 17 01:55:26.809 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Apr 17 01:55:26.811 HYPERVISOR: Started on IP = localhost, TCP port = 50029.
+Apr 17 01:55:27.279 HYPERVISOR: exec_cmd: hypervisor version 
+Apr 17 01:55:27.280 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\nunos\GNS3\projects\ct\src3\project-files\dynamips 
+Apr 17 01:55:27.280 GENERAL: working_dir=C:\Users\nunos\GNS3\projects\ct\src3\project-files\dynamips
+Apr 17 01:55:27.280 HYPERVISOR: exec_cmd: ethsw create Switch3 
+Apr 17 01:55:37.177 HYPERVISOR: exec_cmd: nio create_udp udp-f7467d1a-6a0b-47b8-9702-ca5c20f59d87 10045 127.0.0.1 10044 
+Apr 17 01:55:37.177 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-f7467d1a-6a0b-47b8-9702-ca5c20f59d87 
+Apr 17 01:55:37.208 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-f7467d1a-6a0b-47b8-9702-ca5c20f59d87 1 
+Apr 17 01:55:37.380 HYPERVISOR: exec_cmd: nio create_udp udp-300ea554-2da1-4950-8727-e945b894a10d 10047 127.0.0.1 10046 
+Apr 17 01:55:37.380 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-300ea554-2da1-4950-8727-e945b894a10d 
+Apr 17 01:55:37.396 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-300ea554-2da1-4950-8727-e945b894a10d 1 
+Apr 17 01:55:37.477 HYPERVISOR: exec_cmd: nio create_udp udp-57887533-edcc-4295-99ca-e4ced032c5d6 10048 127.0.0.1 10049 
+Apr 17 01:55:37.478 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-57887533-edcc-4295-99ca-e4ced032c5d6 
+Apr 17 01:55:37.489 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-57887533-edcc-4295-99ca-e4ced032c5d6 1 
+Apr 17 01:55:37.596 HYPERVISOR: exec_cmd: nio create_udp udp-aaee74fa-e10c-4a41-a461-aa79532124d1 10050 127.0.0.1 10051 
+Apr 17 01:55:37.596 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-aaee74fa-e10c-4a41-a461-aa79532124d1 
+Apr 17 01:55:37.613 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-aaee74fa-e10c-4a41-a461-aa79532124d1 1 
+Apr 17 01:58:34.340 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-300ea554-2da1-4950-8727-e945b894a10d 1 
+Apr 17 01:58:34.340 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-f7467d1a-6a0b-47b8-9702-ca5c20f59d87 1 
+Apr 17 01:58:34.340 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-aaee74fa-e10c-4a41-a461-aa79532124d1 1 
+Apr 17 01:58:34.340 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-57887533-edcc-4295-99ca-e4ced032c5d6 1 
+Apr 17 07:14:45.460 HYPERVISOR: exec_cmd: nio bind_filter udp-aaee74fa-e10c-4a41-a461-aa79532124d1 2 capture 
+Apr 17 07:14:45.461 HYPERVISOR: exec_cmd: nio setup_filter udp-aaee74fa-e10c-4a41-a461-aa79532124d1 2 en10mb C:\Users\nunos\GNS3\projects\ct\src3\project-files\captures\Switch3_Ethernet3_to_PC3_Ethernet0.pcap 
+Apr 17 07:21:37.612 HYPERVISOR: exec_cmd: nio bind_filter udp-57887533-edcc-4295-99ca-e4ced032c5d6 2 capture 
+Apr 17 07:21:37.613 HYPERVISOR: exec_cmd: nio setup_filter udp-57887533-edcc-4295-99ca-e4ced032c5d6 2 en10mb C:\Users\nunos\GNS3\projects\ct\src3\project-files\captures\Switch3_Ethernet4_to_PC4_Ethernet0.pcap 
+Apr 17 07:21:41.173 HYPERVISOR: exec_cmd: nio unbind_filter udp-aaee74fa-e10c-4a41-a461-aa79532124d1 2 
+Apr 17 07:32:53.218 HYPERVISOR: exec_cmd: nio unbind_filter udp-57887533-edcc-4295-99ca-e4ced032c5d6 2 
+Apr 17 07:32:56.174 HYPERVISOR: exec_cmd: nio bind_filter udp-aaee74fa-e10c-4a41-a461-aa79532124d1 2 capture 
+Apr 17 07:32:56.177 HYPERVISOR: exec_cmd: nio setup_filter udp-aaee74fa-e10c-4a41-a461-aa79532124d1 2 en10mb C:\Users\nunos\GNS3\projects\ct\src3\project-files\captures\Switch3_Ethernet3_to_PC3_Ethernet0.pcap 
+Apr 17 07:36:21.106 HYPERVISOR: exec_cmd: nio unbind_filter udp-aaee74fa-e10c-4a41-a461-aa79532124d1 2 
+Apr 17 09:06:43.253 HYPERVISOR: Stopped.
+Apr 17 09:06:43.428 GENERAL: reset done.

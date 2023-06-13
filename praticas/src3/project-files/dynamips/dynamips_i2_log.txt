@@ -1,0 +1,47 @@
+Apr 17 01:55:17.793 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Apr 17 01:55:17.793 HYPERVISOR: Started on IP = localhost, TCP port = 50008.
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: hypervisor version 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\nunos\GNS3\projects\ct\src3\project-files\dynamips 
+Apr 17 01:55:18.266 GENERAL: working_dir=C:\Users\nunos\GNS3\projects\ct\src3\project-files\dynamips
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\nunos\GNS3\projects\ct\src3\project-files\dynamips\68330d5f-507a-42a8-bda5-dc5a346e115d 
+Apr 17 01:55:18.266 GENERAL: working_dir=C:\Users\nunos\GNS3\projects\ct\src3\project-files\dynamips\68330d5f-507a-42a8-bda5-dc5a346e115d
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm create R2 2 c3725 
+Apr 17 01:55:18.266 VM: VM R2 created.
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm set_con_tcp_port R2 5005 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: c3725 get_mac_addr R2 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm set_disk0 R2 0 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm set_exec_area R2 64 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm set_idle_pc R2 0x60a6a1e0 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm set_ios R2 C:/Users/nunos/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.bin 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: c3725 set_mac_addr R2 c202.140c.0000 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm set_nvram R2 256 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm slot_add_binding R2 1 0 NM-1FE-TX 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 01:55:18.266 HYPERVISOR: exec_cmd: vm slot_add_binding R2 2 0 NM-1FE-TX 
+Apr 17 01:55:31.141 HYPERVISOR: exec_cmd: nio create_udp udp-7757705d-25b3-4755-b2e3-7ff9e914c4e7 10006 127.0.0.1 10007 
+Apr 17 01:55:31.406 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2 0 1 udp-7757705d-25b3-4755-b2e3-7ff9e914c4e7 
+Apr 17 01:55:31.406 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 01:55:31.647 HYPERVISOR: exec_cmd: nio create_udp udp-86a90b22-91c7-4119-ae8b-c1b193ccf5ca 10014 127.0.0.1 10015 
+Apr 17 01:55:31.651 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2 0 0 udp-86a90b22-91c7-4119-ae8b-c1b193ccf5ca 
+Apr 17 01:55:31.652 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 01:59:06.798 HYPERVISOR: exec_cmd: vm set_ios R2 C:/Users/nunos/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.bin 
+Apr 17 03:39:57.503 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 03:39:57.508 HYPERVISOR: exec_cmd: vm extract_config R2 
+Apr 17 07:49:30.029 HYPERVISOR: exec_cmd: vm set_ghost_status R2 2 
+Apr 17 07:49:30.045 HYPERVISOR: exec_cmd: vm set_ghost_file R2 C:\Users\nunos\GNS3\projects\ct\src3\project-files\dynamips\c3725-advipservicesk9-mz.124-21.bin-128.ghost 
+Apr 17 07:49:30.046 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 07:49:30.089 HYPERVISOR: exec_cmd: vm set_config R2 configs\i2_startup-config.cfg 
+Apr 17 07:49:30.090 HYPERVISOR: exec_cmd: vm start R2 
+Apr 17 07:51:31.343 HYPERVISOR: exec_cmd: vm extract_config R2 
+Apr 17 07:51:31.452 HYPERVISOR: exec_cmd: vm extract_config R2 
+Apr 17 09:04:57.229 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 09:04:57.235 HYPERVISOR: exec_cmd: vm stop R2 
+Apr 17 09:04:57.575 VM: VM R2 shutdown.
+Apr 17 09:04:57.611 HYPERVISOR: exec_cmd: vm extract_config R2 
+Apr 17 09:06:32.079 HYPERVISOR: exec_cmd: vm get_status R2 
+Apr 17 09:06:32.083 HYPERVISOR: exec_cmd: vm extract_config R2 
+Apr 17 09:06:43.222 HYPERVISOR: Stopped.
+Apr 17 09:06:43.223 VM: VM R2 destroyed.
+Apr 17 09:06:43.328 GENERAL: reset done.
