@@ -4,6 +4,7 @@ COMMAND AND CONTROL:
     -192.168.103.78
     -192.168.103.107
 
+->CORREÇÂO: deve ser o (numero de pedidos ou racio/quantidade de up/down) das ligacoes DNS a dividir por (numero de pedidos ou racio/quantidade de up/down) das ligacoes não DNS 
 -----------------------------------------------------------------
 
 BOTNETS:
@@ -66,7 +67,9 @@ timestamps:
     -dst:
         -142.250.184.247
 
-
+->CORREÇÃO: isto não havia no projeto, foi coincidencia
+-----------------------------------------------------------------
+faltou uma maquina mas nem o algoritmo do professor a detetou, por isso não descontou
 -----------------------------------------------------------------
 
 Apoio:
